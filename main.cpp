@@ -20,12 +20,14 @@ Game *initGame(void) {
     Game* g = new Game(initscr(), COLS, LINE_MAX);
     noecho();
     wborder(g->getWin(), ACS_DIAMOND, ACS_DIAMOND, '-', '-', '+', '+', '+', '+');
+    cbreak();
+    keypad(g->getWin(), TRUE);
+    nodelay(g->getWin(), TRUE);
     return g;
 }
 
 int main(void) {
     Game *g = initGame();
-    cbreak();
     
     getch();
     endwin();

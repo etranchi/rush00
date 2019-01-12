@@ -13,16 +13,15 @@
 #ifndef ENTITY_H
 #define ENTITY_H
 
-class Entity
+class IEntity
 {
     private:
         int _y;
         int _x;
     public:
-        Entity(/* args */);
-        ~Entity();
-        void move();
-        void tick();
+        virtual ~IEntity();
+        virtual void move() = 0;
+        virtual void tick();
 };
 
 #endif //ENTITY_H
