@@ -41,3 +41,7 @@ WINDOW * Game::getWin(void) {
     return this->_win;
 }
 
+void Game::addPlayer(Player *p) {
+    this->player = p;
+}
+

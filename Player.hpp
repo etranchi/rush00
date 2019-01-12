@@ -1,36 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Game.hpp                                           :+:      :+:    :+:   */
+/*   Player.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etranchi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/12 13:11:53 by etranchi          #+#    #+#             */
-/*   Updated: 2019/01/12 13:11:53 by etranchi         ###   ########.fr       */
+/*   Created: 2019/01/12 14:37:27 by etranchi          #+#    #+#             */
+/*   Updated: 2019/01/12 14:37:28 by etranchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
+#include "Entity.hpp"
+#include <iostream>
 #include <curses.h>
-#include "Player.hpp"
+#ifndef PLAYER_H
+#define PLAYER_H
 
-#ifndef GAME_H
-#define GAME_H
-class Game {
+class Player {
 private:
-    int _width;
-    int _height;
-    WINDOW *_win;
-
+    int _y;
+    int _x;
+    bool _alive;
+    chtype _display;
 public:
-    Game();
-    Game(WINDOW *w, int width, int height);
-    Game(Game const & ref);
-    Game & operator=(Game const & rhs);
-    ~Game();
-    WINDOW *getWin(void);
-    void addPlayer(Player *p);
-    Player *player;
+    Player();
+    Player(int x, int y);
+    Player(Player const & ref);
+    ~Player();
+    void move(int y);
+    void fire();
+    void tick();
+    bool isAlive();
+    int getX();
+    int getY();
+    chtype getDisplay();
 };
 
-#endif //GAME_H
+#endif //PLAYER_H

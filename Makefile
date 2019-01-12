@@ -1,7 +1,8 @@
 NAME = ft_retro
 
 SRC_FILES = main.cpp\
-			Game.cpp
+			Game.cpp\
+			Player.cpp
 
 PP = g++
 
