@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Game.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etranchi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 13:11:56 by etranchi          #+#    #+#             */
-/*   Updated: 2019/01/12 13:11:57 by etranchi         ###   ########.fr       */
+/*   Updated: 2019/01/12 14:55:54 by fmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,23 @@
 #include "Game.hpp"
 
 
-Game::Game(WINDOW *w, int width, int height) : _win(w), _width(width), _height(height) {
+Game::Game() : _width(), _height(), _win() {
 
+}
+
+Game::Game(WINDOW *w, int width, int height) : _width(width), _height(height), _win(w) {
+
+}
+
+
+Game::Game(Game const & ref) {
+    *this = ref;
 }
 
 Game::~Game() {
 
 }
 
-Game::Game() : _win(), _width(), _height() {
-
-}
-
-Game::Game(Game const & ref) {
-    *this = ref;
-}
 
 Game &Game::operator=(Game const & rhs) {
     this->_width = rhs._width;

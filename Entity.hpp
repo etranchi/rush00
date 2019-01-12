@@ -15,12 +15,13 @@
 
 class IEntity
 {
+    private:
+        int _y;
+        int _x;
     public:
-        virtual ~IEntity() {};
+        virtual ~IEntity();
         virtual void move() = 0;
         virtual void tick();
-
-  
 };
 
 #endif //ENTITY_H
