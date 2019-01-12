@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etranchi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 12:32:51 by etranchi          #+#    #+#             */
-/*   Updated: 2019/01/12 12:32:52 by etranchi         ###   ########.fr       */
+/*   Updated: 2019/01/12 14:55:19 by fmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ Game *initGame(void) {
 int main(void) {
     Game *g = initGame();
     
+    (void)g; // (to test compilatio, because g is unused)
     getch();
     endwin();
     
