@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Game.hpp                                           :+:      :+:    :+:   */
+/*   AEnemy.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/12 13:11:53 by etranchi          #+#    #+#             */
-/*   Updated: 2019/01/12 20:40:46 by fmuller          ###   ########.fr       */
+/*   Created: 2019/01/12 16:53:07 by fmuller           #+#    #+#             */
+/*   Updated: 2019/01/12 20:50:45 by fmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GAME_HPP
-#define GAME_HPP
+#ifndef AENEMY_HPP
+#define AENEMY_HPP
 
-#include <curses.h>
+#include "AEntity.hpp"
 
-class Game {
-    private:
-        int _width;
-        int _height;
-        WINDOW *_win;
-    public:
-        Game();
-        Game(WINDOW *w, int width, int height);
-        Game(Game const & ref);
-        ~Game();
+class AEnemy : public AEntity {
+	public:
+		AEnemy();
+		AEnemy(int y, int x, char skin, int life, int speed);
+		AEnemy(AEnemy const &src); 
+		~AEnemy();
 
-        Game & operator=(Game const & rhs);
-
-        WINDOW *getWin(void);
+		AEnemy	&operator=(AEnemy const &rhs);
+		
+	private:
+		int	_life;
+		int	_speed;
 };
 
-#endif //GAME_HPP
+#endif
