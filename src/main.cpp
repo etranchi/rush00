@@ -6,7 +6,7 @@
 /*   By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 12:32:51 by etranchi          #+#    #+#             */
-/*   Updated: 2019/01/13 04:52:37 by fmuller          ###   ########.fr       */
+/*   Updated: 2019/01/13 15:59:59 by fmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,23 +40,19 @@ bool is_game_end(char user_input) {
 int main(void) {
 	Game *g = initGame();
 	
-	// BasicShip *pewPew = new BasicShip();
-
 	while (!g->getExit()) {
 		// Get user input
 		g->getUserInput();
+
 		// Update
 		g->updateAll();
-		// pewPew->tick(*g);
 		g->tick();
+
 		// Render Display
 		clear();
-		// pewPew->print();
 		g->printAll();
 		refresh();
 	}
-
-	// delete pewPew;
 
 	curs_set(1);
 	endwin();

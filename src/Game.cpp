@@ -6,7 +6,7 @@
 /*   By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 13:11:56 by etranchi          #+#    #+#             */
-/*   Updated: 2019/01/13 05:05:02 by fmuller          ###   ########.fr       */
+/*   Updated: 2019/01/13 17:21:05 by fmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,59 +64,61 @@ bool	Game::getExit () const {
 void Game::checkCollision() {
 	int p_y = this->_player.getY();
 	int p_x = this->_player.getX();
-	int j = -1;
 
-	while (++j < (int)this->_enemies.size()) {
+	for(int j = 0; j < (int)this->_enemies.size(); j++) {
 		int e_y = this->_enemies[j]->getY();
 		int e_x = this->_enemies[j]->getX();
-		int i = -1;
-		while (++i < (int)this->_missiles.size()) {
+
+		for (int i = 0; i < (int)this->_missiles.size(); i++ ) {
 			int m_y = this->_missiles[i]->getY();
 			int m_x = this->_missiles[i]->getX();
+			// Missile <-> Enemy
 			if (e_x == m_x && e_y == m_y) {
+				delete this->_missiles[i];
 				this->_missiles.erase(this->_missiles.begin() + i);
+				delete this->_enemies[j];
 				this->_enemies.erase(this->_enemies.begin() + j);
 			}
 		}
+		// Player <-> Enemy
 		if (e_y == p_y && e_x == p_x) {
 			this->_exit = true;
 		}
+		// Enemy <-> left screen side
 		if (e_x <= 0) {
 			this->_exit = true;
+		}
+	}
+	for (int i = 0; i < (int)this->_missiles.size(); i++ ) {
+		// Missile <-> right screen side 
+		if (this->_missiles[i]->getX() > this->_width) {
+			delete this->_missiles[i];
+			this->_missiles.erase(this->_missiles.begin() + i);
 		}
 	}
 }
 
 void Game::updateAll() {
-	int j = -1;
-	while (++j < (int)this->_enemies.size()) {
+	for (int j = 0; j < (int)this->_enemies.size(); j++) {
 		this->_enemies[j]->tick(*this);
 	}
 
 	checkCollision();
 
-	int i = -1;
-	while (++i < (int)this->_missiles.size()) {
+	for (int i = 0; i < (int)this->_missiles.size(); i++) {
 		this->_missiles[i]->tick(*this);
 	}
-
-	
-
-	// TODO : call tick of all enemies and all bullet
 }
 
 void Game::printAll() {
 	this->_player.print();
-	int i = -1;
 
-	while (++i < (int)this->_missiles.size()) {
-		this->_missiles[i]->print();
+	for (int j = 0; j < (int)this->_enemies.size(); j++) {
+		this->_enemies[j]->print();
 	}
 
-	int j = -1;
-
-	while (++j < (int)this->_enemies.size()) {
-		this->_enemies[j]->print();
+	for (int i = 0; i < (int)this->_missiles.size(); i++) {
+		this->_missiles[i]->print();
 	}
 }
 
@@ -142,15 +144,14 @@ void Game::getUserInput() {
 			this->_player.move(this->_player.getY() + 1, this->_player.getX());
 			break;
 
-		case 'd' :
+		case 'd':
 		case 'D':
 		// case KEY_RIGHT :
 			this->_player.move(this->_player.getY(), this->_player.getX() + 1);
 			break;
 
 		case ' ':
-			// this->_player.fire(); // Do we need a fire function ?
-			// TODO : add new Missile to a real list
+			// this->_player.fire(); // TODO : Do we need a fire function ?
 			this->addMissile();
 			break;
 

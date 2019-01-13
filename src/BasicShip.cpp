@@ -6,7 +6,7 @@
 /*   By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 18:57:15 by fmuller           #+#    #+#             */
-/*   Updated: 2019/01/13 04:15:24 by fmuller          ###   ########.fr       */
+/*   Updated: 2019/01/13 15:56:21 by fmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 // CONSTRUCTOR / DESTRUCTOR
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-BasicShip::BasicShip() : AEnemy((rand() % LINES - 2) + 1  , COLS - 2	, BASIC_SKIN, BASIC_LIFE, BASIC_IDLE_TIME) {
+BasicShip::BasicShip() : AEnemy((rand() % (LINES - 2)) + 1  , COLS - 2	, BASIC_SKIN, BASIC_LIFE, BASIC_IDLE_TIME) {
 
 }
 
