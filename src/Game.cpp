@@ -83,17 +83,23 @@ void Game::checkCollision() {
 		while (++i < (int)this->_missiles.size()) {
 			int m_y = this->_missiles[i]->getY();
 			int m_x = this->_missiles[i]->getX();
-			if (e_x == m_x && e_y == m_y) {
+			if (e_x == m_x && e_y == m_y && this->_missiles[i]->getOrigin() == 0) {
 				this->_missiles.erase(this->_missiles.begin() + i);
 				this->_enemies.erase(this->_enemies.begin() + j);
 				this->_player.putScore(10);
 			}
+			if (this->_missiles[i]->getOrigin() == 1 && p_y == m_y && p_x == m_x) {
+				this->_exit = true;
+				return ;
+			}
 		}
 		if (e_y == p_y && e_x == p_x) {
 			this->_exit = true;
+			return ;
 		}
 		if (e_x <= 0) {
 			this->_exit = true;
+			return ;
 		}
 	}
 }
@@ -159,12 +165,13 @@ void Game::getUserInput() {
 			this->_player.move(this->_player.getY(), this->_player.getX() + 1);
 			break;
 
-		case ' ':
+		case ' ': {
 			// this->_player.fire(); // Do we need a fire function ?
 			// TODO : add new Missile to a real list
-			this->addMissile();
+			Missile *m = new Missile(this->_player.getY(), this->_player.getX(), 0);
+			this->addMissile(m);
 			break;
-
+		}
 		case 'q':
 		case 'Q':
 			this->_exit = true;
@@ -172,9 +179,7 @@ void Game::getUserInput() {
 	}
 }
 
-void Game::addMissile() {
-	Missile *m = new Missile(this->_player.getY(), this->_player.getX(), 0);
-
+void Game::addMissile(Missile *m) {
 	std::deque<Missile *>::iterator it = find(this->_missiles.begin(), this->_missiles.end(), m);
     if (it == this->_missiles.end()) {
         this->_missiles.push_back(m);

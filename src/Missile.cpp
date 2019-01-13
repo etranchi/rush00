@@ -47,6 +47,9 @@ Missile &	Missile::operator=(Missile const &rhs)
 // OTHER
 // ~~~~~~~~~~
 
+int Missile::getOrigin() const {
+	return this->_origin;
+}
 void Missile::behavior(Game &game) {
 	(void)game;
 	if (this->_origin == ORIGIN_PLAYER) {

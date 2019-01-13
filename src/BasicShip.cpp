@@ -46,7 +46,11 @@ BasicShip &	BasicShip::operator=(BasicShip const &rhs)
 // OTHER
 // ~~~~~~~~~~
 
-void BasicShip::behavior(Game &game) {
-	(void)game;
+void BasicShip::behavior(Game &g) {
 	this->move(this->getY(), this->getX() - 1);
+	int ra = (rand() % 10); 
+	if (ra == 0){
+		Missile *m = new Missile(this->getY(), this->getX(), 1);
+		g.addMissile(m);
+	}
 }

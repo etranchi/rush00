@@ -10,10 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Game.hpp"
 #ifndef BASICSHIP_HPP
 #define BASICSHIP_HPP
 #include <curses.h>
 #include <iostream>
+#include "Missile.hpp"
+
 /**
  * Basic ship, move forward and take one shot to kill
  */
@@ -33,7 +36,7 @@ class BasicShip : public AEnemy {
 
 		BasicShip	&operator=(BasicShip const &rhs);
 
-		virtual void behavior(Game &game);
+		virtual void behavior(Game &);
 	private:
 };
 

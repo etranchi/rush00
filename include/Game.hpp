@@ -36,7 +36,7 @@ class Game {
 
 		WINDOW  *getWin(void);
 		bool    getExit() const;
-		void 	addMissile();
+		void 	addMissile(Missile *);
 		void 	addEnemie(BasicShip *);
 		void 	tick();
 		void 	checkCollision();
