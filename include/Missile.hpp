@@ -34,7 +34,6 @@ class Missile : public AEnemy {
 		~Missile(); 
 
 		Missile	&operator=(Missile const &rhs);
-
 		virtual void behavior(Game &game);
 
 	private:

@@ -37,10 +37,13 @@ class Game {
 		WINDOW  *getWin(void);
 		bool    getExit() const;
 		void 	addMissile();
-		void 	addEnemie();
+		void 	addEnemie(BasicShip *);
 		void 	tick();
 		void 	checkCollision();
 		static long int getTimeInMs();
+		int 		getScore() const;
+		int 		getX() const;
+		int 		getY() const;
 	private:
 		int     _width;
 		int     _height;

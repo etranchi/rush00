@@ -34,7 +34,6 @@ class BasicShip : public AEnemy {
 		BasicShip	&operator=(BasicShip const &rhs);
 
 		virtual void behavior(Game &game);
-
 	private:
 };
 
