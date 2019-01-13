@@ -6,7 +6,7 @@
 /*   By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 12:32:51 by etranchi          #+#    #+#             */
-/*   Updated: 2019/01/13 21:01:06 by fmuller          ###   ########.fr       */
+/*   Updated: 2019/01/13 21:13:42 by fmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,14 @@ int main(void) {
 		refresh();
 	}
 
-	delete g;
+	// Stoping ncurses
 	curs_set(1);
 	endwin();
+
+	std::cout << "\e[31m" << "Game over" << "\e[0m" << std::endl;
+	std::cout << "score: " << g->getScore() << std::endl;
+	delete g;
+
 	return 0;
 }
 
