@@ -16,7 +16,7 @@
 // CONSTRUCTOR / DESTRUCTOR
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-BasicShip::BasicShip() : AEnemy(0, 0, BASIC_SKIN, BASIC_LIFE, BASIC_IDLE_TIME) {
+BasicShip::BasicShip() : AEnemy((rand() % LINES - 2) + 1  , COLS - 2	, BASIC_SKIN, BASIC_LIFE, BASIC_IDLE_TIME) {
 
 }
 

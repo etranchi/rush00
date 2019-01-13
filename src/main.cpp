@@ -40,24 +40,23 @@ bool is_game_end(char user_input) {
 int main(void) {
 	Game *g = initGame();
 	
-	BasicShip *pewPew = new BasicShip(10, 10);
+	// BasicShip *pewPew = new BasicShip();
 
 	while (!g->getExit()) {
 		// Get user input
 		g->getUserInput();
-
 		// Update
 		g->updateAll();
-		pewPew->tick(*g);
-
+		// pewPew->tick(*g);
+		g->tick();
 		// Render Display
 		clear();
-		pewPew->print();
+		// pewPew->print();
 		g->printAll();
 		refresh();
 	}
 
-	delete pewPew;
+	// delete pewPew;
 
 	curs_set(1);
 	endwin();

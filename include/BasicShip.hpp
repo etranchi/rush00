@@ -12,7 +12,8 @@
 
 #ifndef BASICSHIP_HPP
 #define BASICSHIP_HPP
-
+#include <curses.h>
+#include <iostream>
 /**
  * Basic ship, move forward and take one shot to kill
  */

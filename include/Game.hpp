@@ -14,10 +14,12 @@
 #define GAME_HPP
 
 #include <curses.h>
-
+#include <deque>
 #include "Player.hpp"
 #include "AEnemy.hpp"
 #include "Missile.hpp"
+#include "BasicShip.hpp"
+#include <sys/time.h>
 
 class Game {
 	public:
@@ -34,17 +36,22 @@ class Game {
 
 		WINDOW  *getWin(void);
 		bool    getExit() const;
-		
+		void 	addMissile();
+		void 	addEnemie();
+		void 	tick();
+		void 	checkCollision();
+		static long int getTimeInMs();
 	private:
 		int     _width;
 		int     _height;
 		WINDOW  *_win;
 
 		Player  _player;
-		AEnemy  *_enemies;
-		Missile	*_missiles;
-
+		std::deque<BasicShip *>	_enemies;
+		std::deque<Missile *>	_missiles;
 		bool    _exit;
+		long int	_idleTime;
+		long int	_lastTimePlayed;
 };
 
 #endif //GAME_HPP
