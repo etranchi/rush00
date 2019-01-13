@@ -6,7 +6,7 @@
 /*   By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 13:11:56 by etranchi          #+#    #+#             */
-/*   Updated: 2019/01/13 04:07:08 by fmuller          ###   ########.fr       */
+/*   Updated: 2019/01/13 04:11:10 by fmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Game::Game(WINDOW *w, int width, int height) : _width(width), _height(height), _
 }
 
 Game::Game(Game const & ref) {
-    *this = ref;
+	*this = ref;
 }
 
 Game::~Game() {
@@ -37,11 +37,11 @@ Game::~Game() {
 // ~~~~~~~~~~
 
 Game &Game::operator=(Game const & rhs) {
-    this->_width = rhs._width;
-    this->_height = rhs._height;
-    this->_win = rhs._win;
-    this->_enemies = rhs._enemies;
-    return *this;
+	this->_width = rhs._width;
+	this->_height = rhs._height;
+	this->_win = rhs._win;
+	this->_enemies = rhs._enemies;
+	return *this;
 }
 
 // ~~~~~~~~~~
@@ -49,11 +49,11 @@ Game &Game::operator=(Game const & rhs) {
 // ~~~~~~~~~~
 
 WINDOW * Game::getWin(void) {
-    return this->_win;
+	return this->_win;
 }
 
 bool	Game::getExit () const {
-    return this->_exit;
+	return this->_exit;
 }
 
 // ~~~~~~~~~~
@@ -61,38 +61,38 @@ bool	Game::getExit () const {
 // ~~~~~~~~~~
 
 void Game::printAll() {
-    this->_player.print();
-    // TODO : print all enemies and all bullet
+	this->_player.print();
+	// TODO : print all enemies and all bullet
 }
 
 void Game::getUserInput() {
-    char userInput = getch();
+	char userInput = getch();
 
-    switch(userInput) {
-        case 'w':
-        case 'W':
-            this->_player.move(this->_player.getY() - 1, this->_player.getX());
-            break;
+	switch(userInput) {
+		case 'w':
+		case 'W':
+			this->_player.move(this->_player.getY() - 1, this->_player.getX());
+			break;
 
-        case 'a':
-        case 'A':
-            this->_player.move(this->_player.getY(), this->_player.getX() - 1);
-            break;
+		case 'a':
+		case 'A':
+			this->_player.move(this->_player.getY(), this->_player.getX() - 1);
+			break;
 
-        case 's':
-        case 'S':
-            this->_player.move(this->_player.getY() + 1, this->_player.getX());
-            break;
+		case 's':
+		case 'S':
+			this->_player.move(this->_player.getY() + 1, this->_player.getX());
+			break;
 
-        case 'd':
-        case 'D':
-            this->_player.move(this->_player.getY(), this->_player.getX() + 1);
-            break;
-        
-        case 'q':
-        case 'Q':
-            this->_exit = true;
-            break;
+		case 'd':
+		case 'D':
+			this->_player.move(this->_player.getY(), this->_player.getX() + 1);
+			break;
+		
+		case 'q':
+		case 'Q':
+			this->_exit = true;
+			break;
 
-    }
+	}
 }

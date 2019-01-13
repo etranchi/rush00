@@ -6,7 +6,7 @@
 /*   By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 13:11:53 by etranchi          #+#    #+#             */
-/*   Updated: 2019/01/13 03:46:54 by fmuller          ###   ########.fr       */
+/*   Updated: 2019/01/13 04:11:56 by fmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +19,29 @@
 #include "Player.hpp"
 
 class Game {
-    private:
-        int     _width;
-        int     _height;
-        WINDOW  *_win;
+	public:
+		Game();
+		Game(WINDOW *w, int width, int height);
+		Game(Game const & ref);
+		~Game();
 
-        Player  _player;
-        AEnemy  *_enemies;
+		Game & operator=(Game const & rhs);
 
-        bool    _exit;
+		void    printAll();
+		void    getUserInput();
 
-    public:
-        Game();
-        Game(WINDOW *w, int width, int height);
-        Game(Game const & ref);
-        ~Game();
+		WINDOW  *getWin(void);
+		bool    getExit() const;
+		
+	private:
+		int     _width;
+		int     _height;
+		WINDOW  *_win;
 
-        Game & operator=(Game const & rhs);
+		Player  _player;
+		AEnemy  *_enemies;
 
-        void    printAll();
-        void    getUserInput();
-
-        WINDOW  *getWin(void);
-        bool    getExit() const;
+		bool    _exit;
 };
 
 #endif //GAME_HPP
