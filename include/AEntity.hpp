@@ -6,14 +6,16 @@
 /*   By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 12:58:28 by etranchi          #+#    #+#             */
-/*   Updated: 2019/01/13 03:14:16 by fmuller          ###   ########.fr       */
+/*   Updated: 2019/01/13 04:05:03 by fmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef AENTITY_HPP
 #define AENTITY_HPP
 
-#include "Game.hpp"
+// #include "Game.hpp"
+// No include here to avoid circular include problem
+class Game;
 
 class AEntity {
 	public:
