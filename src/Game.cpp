@@ -6,7 +6,7 @@
 /*   By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 13:11:56 by etranchi          #+#    #+#             */
-/*   Updated: 2019/01/13 21:00:26 by fmuller          ###   ########.fr       */
+/*   Updated: 2019/01/13 22:06:52 by fmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ void Game::checkCollision() {
 				delete this->_enemies[j];
 				this->_enemies.erase(this->_enemies.begin() + j);
 				this->_player.putScore(10);
+				continue;
 			}
 			// Missile Enemy <-> Player
 			if (this->_missiles[i]->getOrigin() == ORIGIN_ENEMY && p_y == m_y && p_x == m_x) {
@@ -116,7 +117,7 @@ void Game::checkCollision() {
 		}
 	}
 	for (int i = 0; i < (int)this->_missiles.size(); i++) {
-		// Missile <-> right screen side 
+		// Missile <-> right side 
 		if (this->_missiles[i]->getX() > this->_width || this->_missiles[i]->getX() < 0) {
 			delete this->_missiles[i];
 			this->_missiles.erase(this->_missiles.begin() + i);
