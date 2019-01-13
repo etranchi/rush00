@@ -6,7 +6,7 @@
 /*   By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 13:11:53 by etranchi          #+#    #+#             */
-/*   Updated: 2019/01/13 04:11:56 by fmuller          ###   ########.fr       */
+/*   Updated: 2019/01/13 04:50:50 by fmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 
 #include <curses.h>
 
-#include "AEnemy.hpp"
 #include "Player.hpp"
+#include "AEnemy.hpp"
+#include "Missile.hpp"
 
 class Game {
 	public:
@@ -27,6 +28,7 @@ class Game {
 
 		Game & operator=(Game const & rhs);
 
+		void	updateAll();
 		void    printAll();
 		void    getUserInput();
 
@@ -40,6 +42,7 @@ class Game {
 
 		Player  _player;
 		AEnemy  *_enemies;
+		Missile	*_missiles;
 
 		bool    _exit;
 };

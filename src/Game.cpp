@@ -6,7 +6,7 @@
 /*   By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 13:11:56 by etranchi          #+#    #+#             */
-/*   Updated: 2019/01/13 04:11:10 by fmuller          ###   ########.fr       */
+/*   Updated: 2019/01/13 05:05:02 by fmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 // CONSTRUCTOR / DESTRUCTOR
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Game::Game() : _width(), _height(), _win(), _enemies(NULL), _exit(false) {
+Game::Game() : _width(), _height(), _win(), _enemies(NULL), _missiles(NULL), _exit(false) {
 
 }
 
-Game::Game(WINDOW *w, int width, int height) : _width(width), _height(height), _win(w), _player(Player(5, 5)), _enemies(NULL), _exit(false) {
+Game::Game(WINDOW *w, int width, int height) : _width(width), _height(height), _win(w), _player(Player(5, 5)), _enemies(NULL), _missiles(NULL), _exit(false) {
 
 }
 
@@ -60,8 +60,18 @@ bool	Game::getExit () const {
 // OTHER
 // ~~~~~~~~~~
 
+void Game::updateAll() {
+	if (this->_missiles) {
+		this->_missiles->tick(*this);
+	}
+	// TODO : call tick of all enemies and all bullet
+}
+
 void Game::printAll() {
 	this->_player.print();
+	if (this->_missiles) {
+		this->_missiles->print();
+	}
 	// TODO : print all enemies and all bullet
 }
 
@@ -88,11 +98,16 @@ void Game::getUserInput() {
 		case 'D':
 			this->_player.move(this->_player.getY(), this->_player.getX() + 1);
 			break;
-		
+
+		case ' ':
+			// this->_player.fire(); // Do we need a fire function ?
+			// TODO : add new Missile to a real list
+			this->_missiles = new Missile(this->_player.getY(), this->_player.getX() + 1, ORIGIN_PLAYER);
+			break;
+
 		case 'q':
 		case 'Q':
 			this->_exit = true;
 			break;
-
 	}
 }

@@ -6,7 +6,7 @@
 #    By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/07 15:34:13 by fmuller           #+#    #+#              #
-#    Updated: 2019/01/13 03:19:17 by fmuller          ###   ########.fr        #
+#    Updated: 2019/01/13 04:41:57 by fmuller          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ LDFLAGS				=
 LDLIBS				= -lncurses
 
 #~~~~~~~~~~| SOURCES |~~~~~~~~~~#
-SRC_NAME 			= main.cpp Game.cpp AEntity.cpp Player.cpp AEnemy.cpp BasicShip.cpp
+SRC_NAME 			= main.cpp Game.cpp AEntity.cpp Player.cpp Missile.cpp AEnemy.cpp BasicShip.cpp
 SRC_DIR				= src
 SRC					= $(addprefix $(SRC_DIR)/,$(SRC_NAME))
 

@@ -6,7 +6,7 @@
 /*   By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 12:32:51 by etranchi          #+#    #+#             */
-/*   Updated: 2019/01/13 04:10:25 by fmuller          ###   ########.fr       */
+/*   Updated: 2019/01/13 04:52:37 by fmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int main(void) {
 		g->getUserInput();
 
 		// Update
+		g->updateAll();
 		pewPew->tick(*g);
 
 		// Render Display
