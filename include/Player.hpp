@@ -14,7 +14,7 @@
 #define PLAYER_HPP
 
 #define PLAYER_SKIN '>'
-
+#include <curses.h>
 #include "AEntity.hpp"
 
 class Player : public AEntity {
@@ -29,9 +29,11 @@ class Player : public AEntity {
 		virtual void	move(int const y, int const x);
 		virtual void	tick(Game &game);
 		void			fire();
-
+		int				getScore(void) const;
+		void 			putScore(int score);
 	private:
 		bool _alive;
+		int _score;
 };
 
 #endif

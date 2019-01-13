@@ -47,6 +47,9 @@ Player &	Player::operator=(Player const &rhs)
 // ~~~~~~~~~~
 
 void Player::move(int const y, int const x) {
+	if (y >= LINES || x >= COLS) {
+		return; 
+	}
 	if (y < 0) {
 		this->setY(0);
 	} else {
@@ -67,4 +70,12 @@ void Player::tick(Game &game) {
 void Player::fire() {
 	// TODO : Delte this line (here because: "private field '_alive' is not used")
 	(void)this->_alive;
+}
+
+int Player::getScore(void) const {
+	return this->_score;
+}
+
+void Player::putScore(int score) {
+	this->_score += score;
 }

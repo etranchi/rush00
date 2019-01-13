@@ -6,7 +6,7 @@
 /*   By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 12:32:51 by etranchi          #+#    #+#             */
-/*   Updated: 2019/01/13 15:59:59 by fmuller          ###   ########.fr       */
+/*   Updated: 2019/01/13 17:41:17 by fmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,16 @@
 
 
 Game *initGame(void) {
-	Game* g = new Game(initscr(), COLS, LINE_MAX);
+	initscr();
+	WINDOW *game_win = subwin(stdscr, LINES, COLS , 0, 0);
+	Game* g = new Game(game_win, COLS, LINES);
+
 	raw();							// Line buffering disabled (and disable ctrl+C)
 	noecho();						// Disable echo user input
-	curs_set(0);					// Hide cursor
-	keypad(g->getWin(), TRUE);		// We can get arrow key, F1, F2...
-	nodelay(g->getWin(), TRUE);		// Asking user input doesn't block
-	start_color();					// Allow use of color
-
+	curs_set(0);				// Hide cursor
+	keypad(stdscr, TRUE);		// We can get arrow key, F1, F2...
+	nodelay(stdscr, TRUE);		// Asking user input doesn't block
+	start_color();				// Allow use of color
 	return g;
 }
 
@@ -51,6 +53,18 @@ int main(void) {
 		// Render Display
 		clear();
 		g->printAll();
+		mvwprintw(g->getWin(), 1, 1, "Score : " );
+		std::string score = std::to_string(g->getScore());
+		mvwprintw(g->getWin(), 1, 9, score.c_str());
+		mvwprintw(g->getWin(), 1, 12, "| y : " );
+		std::string y = std::to_string(g->getY());
+		mvwprintw(g->getWin(), 1, 18, y.c_str());
+		mvwprintw(g->getWin(), 1, 20, "| x : " );
+		std::string x = std::to_string(g->getX());
+		mvwprintw(g->getWin(), 1, 26, x.c_str());
+		
+
+
 		refresh();
 	}
 

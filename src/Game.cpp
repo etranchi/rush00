@@ -6,7 +6,7 @@
 /*   By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 13:11:56 by etranchi          #+#    #+#             */
-/*   Updated: 2019/01/13 17:21:05 by fmuller          ###   ########.fr       */
+/*   Updated: 2019/01/13 17:57:44 by fmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Game::Game() : _width(), _height(), _win(), _enemies(0), _missiles(0), _exit(fal
 
 }
 
-Game::Game(WINDOW *w, int width, int height) : _width(width), _height(height), _win(w), _player(Player(5, 5)), _enemies(0), _missiles(0), _exit(false), _idleTime(2000), _lastTimePlayed(getTimeInMs()){
+Game::Game(WINDOW *w, int width, int height) : _width(width), _height(height), _win(w), _player(Player(height / 2, 2)), _enemies(0), _missiles(0), _exit(false), _idleTime(2000), _lastTimePlayed(getTimeInMs()){
 
 }
 
@@ -56,6 +56,16 @@ bool	Game::getExit () const {
 	return this->_exit;
 }
 
+int Game::getScore() const {
+	return this->_player.getScore();
+}
+int Game::getX() const {
+	return this->_player.getX();
+}
+int Game::getY() const {
+	return this->_player.getY();
+}
+
 // ~~~~~~~~~~
 // OTHER
 // ~~~~~~~~~~
@@ -72,21 +82,29 @@ void Game::checkCollision() {
 		for (int i = 0; i < (int)this->_missiles.size(); i++ ) {
 			int m_y = this->_missiles[i]->getY();
 			int m_x = this->_missiles[i]->getX();
-			// Missile <-> Enemy
-			if (e_x == m_x && e_y == m_y) {
+			// Missile Player <-> Enemy
+			if (e_x == m_x && e_y == m_y && this->_missiles[i]->getOrigin() == ORIGIN_PLAYER) {
 				delete this->_missiles[i];
 				this->_missiles.erase(this->_missiles.begin() + i);
 				delete this->_enemies[j];
 				this->_enemies.erase(this->_enemies.begin() + j);
+				this->_player.putScore(10);
+			}
+			// Missile Enemy <-> Player
+			if (this->_missiles[i]->getOrigin() == ORIGIN_ENEMY && p_y == m_y && p_x == m_x) {
+				this->_exit = true;
+				return ;
 			}
 		}
 		// Player <-> Enemy
 		if (e_y == p_y && e_x == p_x) {
 			this->_exit = true;
+			return ;
 		}
 		// Enemy <-> left screen side
 		if (e_x <= 0) {
 			this->_exit = true;
+			return ;
 		}
 	}
 	for (int i = 0; i < (int)this->_missiles.size(); i++ ) {
@@ -150,10 +168,12 @@ void Game::getUserInput() {
 			this->_player.move(this->_player.getY(), this->_player.getX() + 1);
 			break;
 
-		case ' ':
+		case ' ': {
 			// this->_player.fire(); // TODO : Do we need a fire function ?
-			this->addMissile();
+			Missile *m = new Missile(this->_player.getY(), this->_player.getX(), 0);
+			this->addMissile(m);
 			break;
+		}
 
 		case 'q':
 		case 'Q':
@@ -162,8 +182,7 @@ void Game::getUserInput() {
 	}
 }
 
-void Game::addMissile() {
-	Missile *m = new Missile(this->_player.getY(), this->_player.getX(), 0);
+void Game::addMissile(Missile *m) {
 	std::deque<Missile *>::iterator it = find(this->_missiles.begin(), this->_missiles.end(), m);
     if (it == this->_missiles.end()) {
         this->_missiles.push_back(m);
@@ -171,8 +190,16 @@ void Game::addMissile() {
     return ;
 }
 
-void Game::addEnemie() {
-	BasicShip *b = new BasicShip();
+void Game::addEnemie(BasicShip *b) {
+	int ra = (rand() % 5);
+	if (ra == 0) {
+		BasicShip *b1 = new BasicShip(b->getY() - 1, b->getX());
+		this->addEnemie(b1);
+		BasicShip *b2 = new BasicShip(b->getY() - 1, b->getX() - 1);
+		this->addEnemie(b2);
+		BasicShip *b3 = new BasicShip(b->getY(), b->getX() - 1);
+		this->addEnemie(b3);
+	}
 	std::deque<BasicShip *>::iterator it = find(this->_enemies.begin(), this->_enemies.end(), b);
     if (it == this->_enemies.end()) {
         this->_enemies.push_back(b);
@@ -186,7 +213,8 @@ void Game::tick() {
 	currentTime = Game::getTimeInMs();
 	if (this->_lastTimePlayed + this->_idleTime <= currentTime) {
 		this->_lastTimePlayed = currentTime;
-		this->addEnemie();
+		BasicShip *b = new BasicShip();
+		this->addEnemie(b);
 	}
 }
 
