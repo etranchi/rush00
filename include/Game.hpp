@@ -6,7 +6,7 @@
 /*   By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 13:11:53 by etranchi          #+#    #+#             */
-/*   Updated: 2019/01/13 18:17:09 by fmuller          ###   ########.fr       */
+/*   Updated: 2019/01/13 21:00:31 by fmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,28 +32,29 @@ class Game {
 		Game & operator=(Game const & rhs);
 
 		void	updateAll();
-		void    printAll();
-		void    getUserInput();
+		void	printAll();
+		void	getUserInput();
 
-		WINDOW  *getWin(void);
-		bool    getExit() const;
-		void 	addMissile(Missile *);
-		void 	addEnemie(BasicShip *);
-		void 	tick();
-		void 	checkCollision();
-		static long int getTimeInMs();
-		int 		getScore() const;
-		int 		getX() const;
-		int 		getY() const;
+		WINDOW	*getWin(void);
+		bool	getExit() const;
+		void	addMissile(Missile *);
+		void	addEnemie(BasicShip *);
+		void	tick();
+		void	checkCollision();
+		static long int	getTimeInMs();
+		int			getScore() const;
+		int			getX() const;
+		int			getY() const;
+
 	private:
-		int     _width;
-		int     _height;
-		WINDOW  *_win;
+		int		_width;
+		int		_height;
+		WINDOW	*_win;
 
-		Player  _player;
+		Player	_player;
 		std::deque<BasicShip *>	_enemies;
 		std::deque<Missile *>	_missiles;
-		bool    _exit;
+		bool	_exit;
 		long int	_idleTime;
 		long int	_lastTimePlayed;
 };

@@ -6,7 +6,7 @@
 /*   By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 12:32:51 by etranchi          #+#    #+#             */
-/*   Updated: 2019/01/13 17:41:17 by fmuller          ###   ########.fr       */
+/*   Updated: 2019/01/13 21:01:06 by fmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int main(void) {
 		refresh();
 	}
 
+	delete g;
 	curs_set(1);
 	endwin();
 	return 0;

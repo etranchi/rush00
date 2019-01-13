@@ -6,7 +6,7 @@
 /*   By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 13:11:56 by etranchi          #+#    #+#             */
-/*   Updated: 2019/01/13 18:07:24 by fmuller          ###   ########.fr       */
+/*   Updated: 2019/01/13 21:00:26 by fmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,15 @@ Game::Game(Game const & ref) {
 }
 
 Game::~Game() {
+	for (int j = 0; j < (int)this->_enemies.size(); j++) {
+		delete this->_enemies[j];
+		this->_enemies[j] = NULL;
+	}
 
+	for (int i = 0; i < (int)this->_missiles.size(); i++) {
+		delete this->_missiles[i];
+		this->_missiles[i] = NULL;
+	}
 }
 
 // ~~~~~~~~~~
@@ -107,9 +115,9 @@ void Game::checkCollision() {
 			return ;
 		}
 	}
-	for (int i = 0; i < (int)this->_missiles.size(); i++ ) {
+	for (int i = 0; i < (int)this->_missiles.size(); i++) {
 		// Missile <-> right screen side 
-		if (this->_missiles[i]->getX() > this->_width) {
+		if (this->_missiles[i]->getX() > this->_width || this->_missiles[i]->getX() < 0) {
 			delete this->_missiles[i];
 			this->_missiles.erase(this->_missiles.begin() + i);
 		}
@@ -229,4 +237,3 @@ long int Game::getTimeInMs() {
 	long int ms = tp.tv_sec * 1000 + tp.tv_usec / 1000;
 	return ms;
 }
-
