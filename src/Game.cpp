@@ -31,6 +31,9 @@ Game::~Game() {
 
 }
 
+void Game::addPlayer(Player *player){
+	this->player = player;
+}
 
 Game &Game::operator=(Game const & rhs) {
     this->_width = rhs._width;

@@ -12,7 +12,7 @@
 
 
 #include <curses.h>
-
+#include "Player.hpp"
 #ifndef GAME_H
 #define GAME_H
 class Game {
@@ -27,8 +27,9 @@ class Game {
         ~Game();
 
         Game & operator=(Game const & rhs);
-
+        void addPlayer(Player *);
         WINDOW *getWin(void);
+        Player *player;
 };
 
 #endif //GAME_H

@@ -19,7 +19,7 @@ LDFLAGS				=
 LDLIBS				= -lncurses
 
 #~~~~~~~~~~| SOURCES |~~~~~~~~~~#
-SRC_NAME 			= main.cpp Game.cpp
+SRC_NAME 			= main.cpp Game.cpp Player.cpp Entity.cpp
 SRC_DIR				= src
 SRC					= $(addprefix $(SRC_DIR)/,$(SRC_NAME))
 
