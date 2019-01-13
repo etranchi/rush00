@@ -6,7 +6,7 @@
 /*   By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 04:14:44 by fmuller           #+#    #+#             */
-/*   Updated: 2019/01/13 04:56:18 by fmuller          ###   ########.fr       */
+/*   Updated: 2019/01/13 18:17:15 by fmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 
 #define ORIGIN_PLAYER 0
 #define ORIGIN_ENEMY 1
-
 
 #include "AEnemy.hpp"
 
