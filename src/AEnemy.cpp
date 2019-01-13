@@ -6,7 +6,7 @@
 /*   By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 19:05:24 by fmuller           #+#    #+#             */
-/*   Updated: 2019/01/13 02:53:11 by fmuller          ###   ########.fr       */
+/*   Updated: 2019/01/13 03:11:31 by fmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ void AEnemy::move(int const y, int const x) {
 void AEnemy::tick(Game &game) {
 	long int currentTime;
 
-	(void)game;
 	currentTime = AEnemy::getTimeInMs();
 	if (this->_lastTimePlayed + this->_idleTime <= currentTime) {
 		this->_lastTimePlayed = currentTime;

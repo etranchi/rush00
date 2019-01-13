@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AEnemy.hpp                                         :+:      :+:    :+:   */
+/*   Player.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/12 16:53:07 by fmuller           #+#    #+#             */
-/*   Updated: 2019/01/13 03:14:05 by fmuller          ###   ########.fr       */
+/*   Created: 2019/01/13 03:06:08 by fmuller           #+#    #+#             */
+/*   Updated: 2019/01/13 03:14:30 by fmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AENEMY_HPP
-#define AENEMY_HPP
+#ifndef PLAYER_HPP
+#define PLAYER_HPP
 
 #include "AEntity.hpp"
 
-class AEnemy : public AEntity {
-	public:
-		AEnemy();
-		AEnemy(int y, int x, char skin, int life, int idleTime);
-		AEnemy(AEnemy const &src); 
-		~AEnemy();
+class Player : public AEntity {
+	public: 
+		Player();
+		Player(int y, int x);
+		Player(Player const &src); 
+		~Player(); 
 
-		AEnemy	&operator=(AEnemy const &rhs);
-		
+		Player	&operator=(Player const &rhs);
+
 		virtual void	move(int const y, int const x);
 		virtual void	tick(Game &game);
-		virtual void	behavior(Game &game) = 0;
-
-		static long int getTimeInMs();
+		void			fire();
 
 	private:
-		int			_life;
-		long int	_idleTime;
-		long int	_lastTimePlayed;
+		bool _alive;
 };
 
 #endif

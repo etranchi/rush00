@@ -6,7 +6,7 @@
 /*   By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 12:58:28 by etranchi          #+#    #+#             */
-/*   Updated: 2019/01/12 20:35:53 by fmuller          ###   ########.fr       */
+/*   Updated: 2019/01/13 03:14:16 by fmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ class AEntity {
 
 		void print() const;
 
-		virtual void move(int const y, int const x) = 0;
-		virtual void tick(Game &game) = 0;
+		virtual void	move(int const y, int const x) = 0;
+		virtual void	tick(Game &game) = 0;
 
 		int		getX() const;
 		void	setX(int _x);

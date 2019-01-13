@@ -6,7 +6,7 @@
 /*   By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 12:32:51 by etranchi          #+#    #+#             */
-/*   Updated: 2019/01/12 20:36:58 by fmuller          ###   ########.fr       */
+/*   Updated: 2019/01/13 03:18:40 by fmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <curses.h>
 #include <iostream>
 #include "Game.hpp"
+#include "Player.hpp"
 #include "BasicShip.hpp"
 
 
@@ -43,6 +44,7 @@ int main(void) {
     (void)g; // (to test compilatio, because g is unused)
 
     BasicShip *pewPew = new BasicShip(10, 10);
+    Player *player = new Player(10, 5);
 
     while (!is_game_end(user_input)) {
         // Get user input
@@ -54,6 +56,7 @@ int main(void) {
         // Render Display
         clear();
         pewPew->print();
+        player->print();
         refresh();
     }
 
