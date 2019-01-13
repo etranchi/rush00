@@ -6,12 +6,14 @@
 /*   By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 03:06:08 by fmuller           #+#    #+#             */
-/*   Updated: 2019/01/13 03:14:30 by fmuller          ###   ########.fr       */
+/*   Updated: 2019/01/13 04:22:15 by fmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PLAYER_HPP
 #define PLAYER_HPP
+
+#define PLAYER_SKIN '>'
 
 #include "AEntity.hpp"
 

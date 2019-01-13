@@ -6,22 +6,21 @@
 /*   By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 03:05:51 by fmuller           #+#    #+#             */
-/*   Updated: 2019/01/13 03:22:33 by fmuller          ###   ########.fr       */
+/*   Updated: 2019/01/13 04:22:32 by fmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Player.hpp"
-#include <iostream>
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~
 // CONSTRUCTOR / DESTRUCTOR
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Player::Player() : AEntity(0, 0, '>'), _alive(true) {
+Player::Player() : AEntity(0, 0, PLAYER_SKIN), _alive(true) {
 
 }
 
-Player::Player(int y, int x) : AEntity(y, x, '>'), _alive(true) {
+Player::Player(int y, int x) : AEntity(y, x, PLAYER_SKIN), _alive(true) {
 
 }
 

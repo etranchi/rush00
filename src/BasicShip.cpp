@@ -6,12 +6,11 @@
 /*   By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 18:57:15 by fmuller           #+#    #+#             */
-/*   Updated: 2019/01/13 02:40:08 by fmuller          ###   ########.fr       */
+/*   Updated: 2019/01/13 04:15:24 by fmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BasicShip.hpp"
-#include <iostream>
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~
 // CONSTRUCTOR / DESTRUCTOR

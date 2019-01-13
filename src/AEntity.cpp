@@ -6,13 +6,12 @@
 /*   By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 17:37:49 by fmuller           #+#    #+#             */
-/*   Updated: 2019/01/13 03:50:01 by fmuller          ###   ########.fr       */
+/*   Updated: 2019/01/13 04:15:20 by fmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AEntity.hpp"
 #include <curses.h>
-#include <iostream>
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~
 // CONSTRUCTOR / DESTRUCTOR
