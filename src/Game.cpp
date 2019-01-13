@@ -6,7 +6,7 @@
 /*   By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 13:11:56 by etranchi          #+#    #+#             */
-/*   Updated: 2019/01/13 17:57:44 by fmuller          ###   ########.fr       */
+/*   Updated: 2019/01/13 18:07:24 by fmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,30 +141,30 @@ void Game::printAll() {
 }
 
 void Game::getUserInput() {
-	char userInput = getch();
+	chtype userInput = getch();
 
 	switch(userInput) {
 		case 'w':
 		case 'W':
-		// case KEY_UP :
+		case KEY_UP :
 			this->_player.move(this->_player.getY() - 1, this->_player.getX());
 			break;
 
 		case 'a':
 		case 'A':
-		// case KEY_LEFT :
+		case KEY_LEFT :
 			this->_player.move(this->_player.getY(), this->_player.getX() - 1);
 			break;
 
 		case 's':
 		case 'S':
-		// case KEY_DOWN :
+		case KEY_DOWN :
 			this->_player.move(this->_player.getY() + 1, this->_player.getX());
 			break;
 
 		case 'd':
 		case 'D':
-		// case KEY_RIGHT :
+		case KEY_RIGHT :
 			this->_player.move(this->_player.getY(), this->_player.getX() + 1);
 			break;
 
@@ -179,6 +179,11 @@ void Game::getUserInput() {
 		case 'Q':
 			this->_exit = true;
 			break;
+
+		case KEY_RESIZE:
+			this->_width = COLS;
+			this->_height = LINES;
+
 	}
 }
 
