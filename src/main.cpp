@@ -57,7 +57,7 @@ int main(void) {
 		g->printAll();
 		mvwprintw(g->getWin(), 1, 1, "Score : " );
 		std::string score = std::to_string(g->getScore());
-		mvwprintw(g->getWin(), 1, 10, score.c_str());
+		mvwprintw(g->getWin(), 1, 9, score.c_str());
 		mvwprintw(g->getWin(), 1, 12, "| y : " );
 		std::string y = std::to_string(g->getY());
 		mvwprintw(g->getWin(), 1, 18, y.c_str());
