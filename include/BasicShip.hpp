@@ -6,7 +6,7 @@
 /*   By: fmuller <fmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 18:57:00 by fmuller           #+#    #+#             */
-/*   Updated: 2019/01/12 20:51:13 by fmuller          ###   ########.fr       */
+/*   Updated: 2019/01/13 02:38:38 by fmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 #define BASIC_SKIN '<'
 #define BASIC_LIFE 1
-#define BASIC_SPEED 1
+#define BASIC_IDLE_TIME 600
 
 #include "AEnemy.hpp"
 
@@ -32,8 +32,8 @@ class BasicShip : public AEnemy {
 
 		BasicShip	&operator=(BasicShip const &rhs);
 
-		virtual void move(int const y, int const x);
-		virtual void tick(Game &game);
+		virtual void behavior(Game &game);
+
 	private:
 };
 
